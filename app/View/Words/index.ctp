@@ -1,4 +1,4 @@
-<h2>日语背词神器(CAKEPHP版v0.2）</h2>
+<h2>日语背词神器(CAKEPHP版v0.3）</h2>
 <h3>请选择</h3>
 <form name="fm" id="fm" method="get">
 <div>

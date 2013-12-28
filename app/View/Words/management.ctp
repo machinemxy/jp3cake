@@ -1,4 +1,4 @@
-<h2>第<?php echo $lesson;?>课,第<?php echo $part;?>部分</h2>
+<h3>第<?php echo $lesson;?>课,第<?php echo $part;?>部分</h3>
 <table>
 	<tr>
 		<th>假名</th>
@@ -28,7 +28,10 @@
 			}
 			?>
 		</td>
-		<td>a</td>
+		<td>
+			<a href="/jp3cake/words/modify?Id=<?php echo $word['Word']['Id']; ?>">修改</a>
+			<a href="/jp3cake/words/delete?Id=<?php echo $word['Word']['Id']; ?>">删除</a>
+		</td>
 	</tr>
 	<?php
 	}

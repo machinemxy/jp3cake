@@ -1,4 +1,4 @@
-<h2>日语背词神器(CAKEPHP版v0.3）</h2>
+<h2>日语背词神器(CAKEPHP版v0.4）</h2>
 <h3>请选择</h3>
 <form name="fm" id="fm" method="get">
 <div>
@@ -28,7 +28,7 @@
 	</select>
 	部分
 </div>
-<input value="开始背诵" type="submit"/>
+<input value="开始背诵" type="submit" onclick="sub(1)"/>
 <input value="词库管理" type="submit" onclick="sub(2)"/>
 <br/>
 <input value="检视错词" type="submit" onclick="sub(3)"/>
@@ -39,16 +39,16 @@
 	function sub(value){
 		if (value==1)
 		{
-			
+			document.getElementById('fm').action="/jp3cake/words/test";
 		}else if (value==2)
 		{
 			document.getElementById('fm').action="/jp3cake/words/management";
 		}else if (value==3)
 		{
-
+			document.getElementById('fm').action="/jp3cake/words/mistaken";
 		}else if (value==4)
 		{
-
+			document.getElementById('fm').action="/jp3cake/words/procedure";
 		}
 		document.getElementById('fm').submit;
 	}

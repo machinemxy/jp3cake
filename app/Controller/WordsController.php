@@ -88,5 +88,37 @@
 			}
 			$this->redirect('management?lesson='.$lesson.'&part='.$part);
 		}
+		
+		public function mistaken(){
+			$words=$this->Word->query("select * from words as Word where wrongtimes>0 order by lesson,part,Id");
+			$this->set('words',$words);
+		}
+		
+		public function remember(){
+			$Id=$this->request->query['Id'];
+			$word=$this->Word->findById($Id);
+			$word['Word']['wrongtimes']=0;
+			$this->Word->id=$Id;
+			if($this->Word->save($word)){
+				$this->Session->setFlash(__("该词已从错词一览移除"));
+			}else{
+				$this->Session->setFlash(__("该词移除失败"));
+			}
+			$this->redirect('mistaken');
+		}
+		
+		public function procedure(){
+			$procedures=$this->Word->query("select lesson,part,max(times) maxtimes,min(times) mintimes,max(masterdate) maxdate from words group by lesson,part order by lesson,part");
+			$this->set('procedures',$procedures);
+		}
+		
+		public function test(){
+			$lesson=$this->request->query['lesson'];
+			$part=$this->request->query['part'];
+			$count=$this->Word->find('count',array('conditions'=>array('lesson'=>$lesson,'part'=>$part)));
+			$this->set('lesson',$lesson);
+			$this->set('part',$part);
+			$this->set('words',$words);
+		}
 	}
 	?>

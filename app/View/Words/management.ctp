@@ -1,4 +1,7 @@
 <h3>第<?php echo $lesson;?>课,第<?php echo $part;?>部分</h3>
+<a href="/jp3cake/words/insert?lesson=<?php echo $lesson; ?>&part=<?php echo $part; ?>" id="fc">新增</a>
+<a href="/jp3cake/words?lesson=<?php echo $lesson; ?>&part=<?php echo $part; ?>">返回</a>
+<br/>
 <table>
 	<tr>
 		<th>假名</th>
@@ -37,7 +40,7 @@
 	}
 	?>
 </table>
-<a href="/jp3cake/words/insert?lesson=<?php echo $lesson; ?>&part=<?php echo $part; ?>" id="fc">新增</a>
+<a href="/jp3cake/words/insert?lesson=<?php echo $lesson; ?>&part=<?php echo $part; ?>">新增</a>
 <a href="/jp3cake/words?lesson=<?php echo $lesson; ?>&part=<?php echo $part; ?>">返回</a>
 
 <script language="javascript">

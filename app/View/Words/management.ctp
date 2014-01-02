@@ -21,13 +21,13 @@
 			<?php
 			$times=$word['Word']['times'];
 			if($times==0){
-				echo '---';
+				echo '☆☆☆';
 			}else if($times==1){
-				echo '+--';
+				echo '★☆☆';
 			}else if($times==2){
-				echo '++-';
+				echo '★★☆';
 			}else{
-				echo '+++';
+				echo '★★★';
 			}
 			?>
 		</td>

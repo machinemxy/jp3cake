@@ -45,15 +45,15 @@
 		public function doInsert(){
 			$lesson=$this->request->data['Word']['lesson'];
 			$part=$this->request->data['Word']['part'];
+			$kana=$this->request->data['Word']['kana'];
 
 			$this->Word->create();
 			if($this->Word->save($this->request->data)){
-				//$this->Session->setFlash(__("新增成功"));
-				$this->Session->setFlash("新增成功",'default',array('class'=>'success'));
+				$this->Session->setFlash("「".$kana."」新增成功",'default',array('class'=>'success'));
 			}else{
-				$this->Session->setFlash(__("新增失败"));	
+				$this->Session->setFlash(__("「".$kana."」新增失败"));	
 			}
-			$this->redirect('management?lesson='.$lesson.'&part='.$part);
+			$this->redirect('insert?lesson='.$lesson.'&part='.$part);
 		}
 
 		public function modify(){
@@ -65,12 +65,13 @@
 		public function doModify(){
 			$lesson=$this->request->data['Word']['lesson'];
 			$part=$this->request->data['Word']['part'];
+			$kana=$this->request->data['Word']['kana'];
 			
 			$this->Word->id=$this->request->data['Word']['Id'];
 			if($this->Word->save($this->request->data)){
-				$this->Session->setFlash("修改成功",'default',array('class'=>'success'));
+				$this->Session->setFlash("「".$kana."」修改成功",'default',array('class'=>'success'));
 			}else{
-				$this->Session->setFlash(__("修改失败"));
+				$this->Session->setFlash(__("「".$kana."」修改失败"));
 			}
 			$this->redirect('management?lesson='.$lesson.'&part='.$part);
 
@@ -81,11 +82,12 @@
 			$word=$this->Word->findById($Id);
 			$lesson=$word['Word']['lesson'];
 			$part=$word['Word']['part'];
+			$kana=$word['Word']['kana'];
 			
 			if($this->Word->delete($Id)){
-				$this->Session->setFlash("删除成功",'default',array('class'=>'success'));
+				$this->Session->setFlash("「".$kana."」删除成功",'default',array('class'=>'success'));
 			}else{
-				$this->Session->setFlash(__("删除失败"));
+				$this->Session->setFlash(__("「".$kana."」删除失败"));
 			}
 			$this->redirect('management?lesson='.$lesson.'&part='.$part);
 		}
@@ -98,12 +100,13 @@
 		public function remember(){
 			$Id=$this->request->query['Id'];
 			$word=$this->Word->findById($Id);
+			$kana=$word['Word']['kana'];
 			$word['Word']['wrongtimes']=0;
 			$this->Word->id=$Id;
 			if($this->Word->save($word)){
-				$this->Session->setFlash("该词已从错词一览移除",'default',array('class'=>'success'));
+				$this->Session->setFlash("「".$kana."」已从错词一览移除",'default',array('class'=>'success'));
 			}else{
-				$this->Session->setFlash(__("该词移除失败"));
+				$this->Session->setFlash(__("「".$kana."」移除失败"));
 			}
 			$this->redirect('mistaken');
 		}

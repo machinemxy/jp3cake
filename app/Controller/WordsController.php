@@ -46,6 +46,12 @@
 			$lesson=$this->request->data['Word']['lesson'];
 			$part=$this->request->data['Word']['part'];
 			$kana=$this->request->data['Word']['kana'];
+			
+			//20140103
+			if($kana==""){
+				$this->Session->setFlash(__("假名不能为空"));
+				return $this->redirect('insert?lesson='.$lesson.'&part='.$part);
+			}
 
 			$this->Word->create();
 			if($this->Word->save($this->request->data)){
